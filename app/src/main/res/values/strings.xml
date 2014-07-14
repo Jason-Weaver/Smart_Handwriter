@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Smart Handwriter</string>
+    <string name="greeting">Let us do the handwriting for you</string>
+    <string name="action_settings">Settings</string>
+    <string name="name_hint">Your Name…</string>
+    <string name="input_hint">The text you want to be handwritten…</string>
+    <string name="submit">Submit</string>
+    <string name="submit_hint">if this is the data you want to be hand written.</string>
+    <color name="white">#99FFFFFF</color>
+    <color name="greeting">#333333</color>
+
+</resources>
