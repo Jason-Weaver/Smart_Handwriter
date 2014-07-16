@@ -7,7 +7,7 @@
     <string name="name_hint">Your Name…</string>
     <string name="input_hint">The text you want to be handwritten…</string>
     <string name="submit">Submit</string>
-    <string name="submit_hint">if this is the data you want to be hand written.</string>
+    <string name="test">Test</string>
     <color name="white">#99FFFFFF</color>
     <color name="greeting">#333333</color>
 

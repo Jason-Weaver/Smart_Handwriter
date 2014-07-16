@@ -6,9 +6,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+
+import java.io.FileOutputStream;
 
 import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
@@ -17,18 +24,18 @@ import static android.widget.Toast.makeText;
 public class MainActivity extends ActionBarActivity {
 
     private EditText userNameEditText;
+    private EditText theTextBody;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textGreeting = (TextView) findViewById(R.id.greeting);
-        Typeface theTypeFace = Typeface.createFromAsset(getAssets(), "British Quest.otf");
-        textGreeting.setTypeface(theTypeFace);
+        setTypeFace("British Quest.otf");
 
         userNameEditText = (EditText) findViewById(R.id.userNameEditText);
-
+        theTextBody = (EditText) findViewById(R.id.theTextBody);
     }
 
 
@@ -51,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onSubmitClick(View view) {
+    public void onSubmitToToastClick(View view) {
 
         String userName = String.valueOf(userNameEditText.getText());
         String toast1 = "Thank you " + userName + ".";
@@ -59,5 +66,45 @@ public class MainActivity extends ActionBarActivity {
         makeText(this, toast1, Toast.LENGTH_SHORT).show();
         makeText(this, toast2, Toast.LENGTH_LONG).show();
 
+    }
+
+    public void onSubmitClick(View view) {
+
+        String theText = String.valueOf(theTextBody.getText());
+        XWPFDocument document = new XWPFDocument();
+
+        XWPFParagraph paragraph = document.createParagraph();
+        XWPFRun run = paragraph.createRun();
+
+        run.setText("Pancakes");
+        run.setText(" and Peanut Butter!");
+        run.addBreak();
+        run.setText("I'm hungry dude.");
+
+
+        XWPFParagraph paragraph2 = document.createParagraph();
+        XWPFRun run2 = paragraph2.createRun();
+
+        run2.setText("Notice the line Break for a new paragraph.");
+
+
+        try {
+            FileOutputStream output = new FileOutputStream("Awesome.docx");
+            document.write(output);
+            output.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void setTypeFace(String font) {
+        TextView textGreeting = (TextView) findViewById(R.id.greeting);
+        Button submitButton = (Button) findViewById(R.id.submitButton);
+
+        Typeface theTypeFace = Typeface.createFromAsset(getAssets(), font);
+        textGreeting.setTypeface(theTypeFace);
+        submitButton.setTypeface(theTypeFace);
     }
 }

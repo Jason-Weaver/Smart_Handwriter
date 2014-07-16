@@ -39,13 +39,24 @@
             android:id="@+id/userNameEditText" />
 
         <Button
-            android:id="@+id/submit"
+            android:id="@+id/submitButton"
             android:layout_weight="1"
             android:layout_width="100dp"
             android:layout_height="fill_parent"
+            android:layout_marginRight="15dp"
             android:text="@string/submit"
-            android:hint="@string/submit_hint"
+            android:textSize="25sp"
+            android:onClick="onSubmitToToastClick" />
+
+        <Button
+            android:id="@+id/testButton"
+            android:layout_weight="1"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:text="@string/test"
+            android:textSize="25sp"
             android:onClick="onSubmitClick" />
+
 
     </LinearLayout>
 
@@ -53,8 +64,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:inputType="textMultiLine"
-        android:id="@+id/editText2"
+        android:inputType="textMultiLine|textAutoCorrect"
+        android:id="@+id/theTextBody"
         android:hint="@string/input_hint"
  />
 
